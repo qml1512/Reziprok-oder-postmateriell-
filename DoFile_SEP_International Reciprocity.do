@@ -1,13 +1,8 @@
 
 ********************************************************************************
 Reziprok oder postmateriell? 
-Präferenzen in der Gestaltung nationaler Klimapolitik 
-Eine Analyse am Beispiel der Schweiz mit Daten aus dem Schweizer Umweltpanel
-
-Do-File zum Referat von Isabella Stürzer am 28.07.2022      
-
-Umfragen und Umfrageexperimente in der Politikwissenschaft (Dr. Lukas Rudolph)
-Veranstaltungsnummer: 15029                               
+PrÃ¤ferenzen in der Gestaltung nationaler Klimapolitik 
+Eine Analyse am Beispiel der Schweiz mit Daten aus dem Schweizer Umweltpanel                           
 ********************************************************************************
 
 
@@ -18,16 +13,16 @@ Veranstaltungsnummer: 15029
 Datenset laden
 *use "\\nas.ads.mwn.de\ru68pez\Desktop\Datasets in use\w2_data_SEP.dta" 
 
-Installation Add-on zur Darstellung gestapelter Säulen- & Balkendiagramme
+Installation Add-on zur Darstellung gestapelter SÃ¤ulen- & Balkendiagramme
 *ssc inst catplot
 
 Merging Dataset Welle 1 & Welle 2 SEP
-Master-Datenset w2_data_SEP, using-Datenset w1_data_SEP (beide nicht öffentlich zugänglich; für nicht-kommerzielle Zwecke Zugang bentragbar über SwissUbase https://www.swissubase.ch/de/catalogue/studies/13913/17169/overview)
+Master-Datenset w2_data_SEP, using-Datenset w1_data_SEP (beide nicht Ã¶ffentlich zugÃ¤nglich; fÃ¼r nicht-kommerzielle Zwecke Zugang bentragbar Ã¼ber SwissUbase https://www.swissubase.ch/de/catalogue/studies/13913/17169/overview)
 Key-Variable "PubID"
 *merge 1:1 PubId using "\\nas.ads.mwn.de\ru68pez\Desktop\SEP Daten\w1_data_SEP.dta"
 
 *drop if w2_flag == 1 (eliminieren der Beobachtungnen, bei denen Angaben zu Geschlecht und Geburtsjahr der Befragten von den Angaben der
-Personen aus der ursprünglichen Stichprobe lt. Daten des Bevölkerungsregisters des Schweizer Bundesamtes für Statistik um mehr als +/- ein Jahr bzw. in Angaben des Geschlechts abweichen)
+Personen aus der ursprÃ¼nglichen Stichprobe lt. Daten des BevÃ¶lkerungsregisters des Schweizer Bundesamtes fÃ¼r Statistik um mehr als +/- ein Jahr bzw. in Angaben des Geschlechts abweichen)
 
 
 Verwendete Variablen aus dem gemergeten Datensatz
@@ -63,25 +58,25 @@ fehlende/fehlerhafte Responses coden
 *tabulate w2_q13
 *generate treated = w2_q13 if w2_treat5==1
 *tabulate treated
-*label define treat 1 "Verstärken" 2 "Umsetzen" 3 "Abschwächen" 4 "Stoppen" 5 "Aussteigen" (treat ist labelcontainer)
+*label define treat 1 "VerstÃ¤rken" 2 "Umsetzen" 3 "AbschwÃ¤chen" 4 "Stoppen" 5 "Aussteigen" (treat ist labelcontainer)
 *label values treated treat
 *tabulate treated
 
 *generate no_treatment = w2_q13 if w2_treat5==0
 *tabulate no_treatment
-*label define no_treat 1 "Verstärken" 2 "Umsetzen" 3 "Abschwächen" 4 "Stoppen" 5 "Aussteigen" (no_treat ist labelcontainer)
+*label define no_treat 1 "VerstÃ¤rken" 2 "Umsetzen" 3 "AbschwÃ¤chen" 4 "Stoppen" 5 "Aussteigen" (no_treat ist labelcontainer)
 *label values no_treatment no_treat
 *tabulate no_treatment
 
 Neue Variable Alterskohorte "agecohort" generieren
 7 Altersgruppen festlegen mittels Variable w2_q0x1 (label: "birthyear")
-1 = 18-29 Jahre (Teilnahme am SEP ab 18 Jahren), Jahrgänge 1990-2002
-2 = 30-39 Jahre, Jahrgänge 1989-1980
-3 = 40-49 Jahre, Jahrgänge 1979-1970
-4 = 50-59 Jahre, Jahrgänge 1969-1960
-5 = 60-69 Jahre, Jahrgänge 1959-1950
-6 = 70-79 Jahre, Jahrgänge 1949-1940
-7 = 80-99 Jahre, Jahrgänge 1939-1924 (älteste [realistische] Teilnehmende *1924; älteste lebende Schweizerin *1912)
+1 = 18-29 Jahre (Teilnahme am SEP ab 18 Jahren), JahrgÃ¤nge 1990-2002
+2 = 30-39 Jahre, JahrgÃ¤nge 1989-1980
+3 = 40-49 Jahre, JahrgÃ¤nge 1979-1970
+4 = 50-59 Jahre, JahrgÃ¤nge 1969-1960
+5 = 60-69 Jahre, JahrgÃ¤nge 1959-1950
+6 = 70-79 Jahre, JahrgÃ¤nge 1949-1940
+7 = 80-99 Jahre, JahrgÃ¤nge 1939-1924 (Ã¤lteste [realistische] Teilnehmende *1924; Ã¤lteste lebende Schweizerin *1912)
 
 
 *tabulate w2_q0x1 
@@ -96,7 +91,7 @@ Neue Variable Einkommensgruppe "income_m" generieren
 1 = unter 2.000 CHF/Monat (Value Label 1) -> Armutsgrenze CH bei 2.279 CHF/M
 2 = bis 4.000 CHF/Monat (Value Label 2) -> 50% leben von weniger als ca. 4.177 CHF/M
 3 = 4.001 - 8.000 CHF/Monat (Value Labels 3,4)
-4 = 8.001 - 14.000+ CHF/Monat (Value Labels 5 mit 8) -> obere 10% mehr als 7.884 CHF/M zur Verfügung
+4 = 8.001 - 14.000+ CHF/Monat (Value Labels 5 mit 8) -> obere 10% mehr als 7.884 CHF/M zur VerfÃ¼gung
 
 *tabulate w1_q33x1
 *generate income_m = .
@@ -121,10 +116,10 @@ Neue Variable Einkommensgruppe "income_m" generieren
 ********************************************************************************
 INDEX Internationale Konsequenzen
 
-3 Variablen (w2_q12x1 - w2_q12x3) - Welche internationalen Folgen würden Sie erwarten oder nicht erwarten, wenn
+3 Variablen (w2_q12x1 - w2_q12x3) - Welche internationalen Folgen wÃ¼rden Sie erwarten oder nicht erwarten, wenn
 die Schweiz das Ziel einer Reduktion ihrer Treibhausgas-Emissionen bis 2030
 um 50% und bis 2050 um mindestens 70% nicht erreicht? --- Bezogen auf internationale Institutionen
-Zustimmung von 1 "Dies würde sicher nicht eintreten" bis 5 "Dies würde sicher eintreten"
+Zustimmung von 1 "Dies wÃ¼rde sicher nicht eintreten" bis 5 "Dies wÃ¼rde sicher eintreten"
 Bildung Durchschnitts-Index 
 *generate Index_IntCons = (w2_q12x1 + w2_q12x2 + w2_q12x3)/3 (oder *egen Index_IntCons = rowmean (w2_q12x1 w2_q12x2 w2_q12x3))
 
@@ -151,7 +146,7 @@ Achtung: Frage w1_q9x6 und w1_q9x10 sind anders gepolt als w1_q9x1 mit w1_q9x5 s
 *replace w1_q9x6mod=4 if w1_q9x6==2
 *replace w1_q9x6mod=5 if w1_q9x6==1
 *tabulate w1_q9x6mod
-*label define mod6 1 "Stimme überhaupt nicht zu" 2 "Stimme eher nicht zu" 3 "Stimme teils, teils zu" 4 "Stimme eher zu" 5 "Stimme voll zu" (mod6 ist labelcontainer)
+*label define mod6 1 "Stimme Ã¼berhaupt nicht zu" 2 "Stimme eher nicht zu" 3 "Stimme teils, teils zu" 4 "Stimme eher zu" 5 "Stimme voll zu" (mod6 ist labelcontainer)
 *label values w1_q9x6mod mod6
 *tabulate w1_q9x6mod
 
@@ -163,7 +158,7 @@ Achtung: Frage w1_q9x6 und w1_q9x10 sind anders gepolt als w1_q9x1 mit w1_q9x5 s
 *replace w1_q9x10mod=4 if w1_q9x10==2
 *replace w1_q9x10mod=5 if w1_q9x10==1
 *tabulate w1_q9x10mod
-*label define mod10 1 "Stimme überhaupt nicht zu" 2 "Stimme eher nicht zu" 3 "Stimme teils, teils zu" 4 "Stimme eher zu" 5 "Stimme voll zu" (mod10 ist labelcontainer)
+*label define mod10 1 "Stimme Ã¼berhaupt nicht zu" 2 "Stimme eher nicht zu" 3 "Stimme teils, teils zu" 4 "Stimme eher zu" 5 "Stimme voll zu" (mod10 ist labelcontainer)
 *label values w1_q9x10mod mod10
 *tabulate w1_q9x10mod
 
@@ -190,7 +185,7 @@ Scale reliability coefficient:   0,8688
 (signifikanter) Unterschied erkennbar Gruppe & Kontrollgruppe
 Varianz berechnen Treatment/No-Treatment
 *tabstat w2_treat5, s(var) by(w2_q13)
-Schiefe und Wölbung der Verteilung Treatment/No-Treatment berechnen
+Schiefe und WÃ¶lbung der Verteilung Treatment/No-Treatment berechnen
 *tabstat w2_treat5, s(skewness kurtosis) by(w2_q13)
 
 
@@ -200,7 +195,7 @@ Kontingenztabelle erstellen
 Catplot erstellen 
 *catplot w2_q13, over (w2_treat5) percent (w2_treat5) asyvar recast (bar)
 
-Säulendiagramm erstellen: Anzahl der Respondents nach Meinung zu Aktion nach Treatment
+SÃ¤ulendiagramm erstellen: Anzahl der Respondents nach Meinung zu Aktion nach Treatment
 *graph bar (count) w2_q0x1, over (w2_q13) by(w2_treat5)
  kategoriale hier sind nach Geburtsjahr
 
